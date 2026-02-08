@@ -1,0 +1,17 @@
+---
+const { links = [] } = Astro.props;
+// Each link to have { href, label, iconClass }
+---
+
+<div class="mt-8 flex justify-center gap-4 text-4xl leading-none">
+  {links.map((link) => (
+    <a
+      href={link.href}
+      class="text-neutral-400 hover:text-neutral-100 transition-colors"
+      title={link.title}
+      aria-label={link.title}
+    >
+      <i class={link.iconClass}></i>
+    </a>
+  ))}
+</div>

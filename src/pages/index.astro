@@ -1,17 +1,35 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import ProfileHeader from "../components/ProfileHeader.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import PrimaryNav from "../components/PrimaryNav.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <main class="min-h-screen px-6 py-16 flex flex-col items-center justify-center">
+    <div class="w-full max-w-md text-center">
+
+      <ProfileHeader
+        name="James Bell"
+        tagline="Building places and systems that scale"
+      />
+
+      <SocialLinks
+        links={[
+          { href: "https://linkedin.com/in/jsbellca", label: "LinkedIn", iconClass: "bi bi-linkedin" },
+          { href: "https://youtube.com/@jsbellca", label: "YouTube", iconClass: "bi bi-youtube" },
+          { href: "https://github.com/belljs", label: "GitHub", iconClass: "bi bi-github" },
+        ]}
+      />
+
+      <PrimaryNav
+        items={[
+          { href: "/about", label: "About" },
+          { href: "/posts", label: "Posts" },
+          { href: "/resources", label: "Resources" },
+        ]}
+      />
+
+    </div>
+  </main>
+</Layout>

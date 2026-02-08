@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  --code-bg: rgb(38, 38, 38); /* neutral-900-ish */
+  /* or neutral-800: rgb(38 38 38) */
+}
+
+/* --- Shiki Blocks --- */
+
+/* Shiki blocks */
+pre.astro-code,
+pre.astro-code code,
+code[data-theme*=" "],
+code[data-theme],
+.astro-code,
+.astro-code code {
+  background-color: var(--code-bg) !important;
+  background: var(--code-bg) !important;
+}
+
+/* Shiki sometimes uses a CSS variable for bg */
+pre.astro-code,
+pre.astro-code code {
+  --shiki-background: var(--code-bg) !important;
+}
+
+/* keeping spacing/shape consistent */
+pre.astro-code {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+}
+
+/* Inline code */
+article :not(pre) > code {
+  background: var(--code-bg);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: rgb(229 231 235); /* neutral-200 */
+}
+
+/* --- Markdown content typography --- */
+
+article h1 {
+  @apply mt-10 mb-4 text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-100;
+}
+
+article h2 {
+  @apply mt-8 mb-3 text-xl sm:text-2xl font-semibold tracking-tight text-neutral-100 border-b border-neutral-800 pb-1;
+}
+
+article h3 {
+  @apply mt-6 mb-2 text-lg font-semibold text-neutral-100;
+}
+
+article p {
+  @apply my-4 leading-relaxed text-neutral-300;
+}
+
+article ul {
+  @apply my-4 list-disc pl-6;
+}
+
+article li {
+  @apply my-1;
+}
+
+article a {
+  @apply font-medium text-orange-300 underline underline-offset-4
+         decoration-orange-400/30
+         transition-colors duration-150;
+}
+
+article a:hover {
+  @apply text-orange-400 decoration-orange-400/60;
+}

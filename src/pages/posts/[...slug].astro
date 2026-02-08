@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PostNav from "../../components/PostNav.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formatDate = (iso) =>
+  new Date(`${iso}T00:00:00`).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+---
+
+<Layout title={post.data.title}>
+  <main class="min-h-screen px-6 py-16">
+    <div class="mx-auto max-w-2xl">
+      <PostNav />
+
+      <h1 class="mt-6 text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-50">
+        {post.data.title}
+      </h1>
+
+      <div class="mt-2 text-xs text-neutral-500">
+        {formatDate(post.data.date)}
+      </div>
+
+      {post.data.tags?.length ? (
+        <div class="mt-4 flex flex-wrap gap-2">
+          {post.data.tags.map((t) => (
+            <span class="rounded-full border border-neutral-700 bg-neutral-800 px-2 py-0.5 text-xs text-neutral-300">
+              {t}
+            </span>
+          ))}
+        </div>
+      ) : null}
+
+      <article class="mt-8 space-y-5 text-neutral-300 leading-relaxed">
+        <Content />
+      </article>
+    </div>
+  </main>
+</Layout>
