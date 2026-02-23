@@ -52,4 +52,4 @@ generator or starter theme that can spin up the same structure quickly for other
 
 Building this site reminded me of the benefits of keeping scope small: the site can actually stay finished. If it grows, it will be because it’s useful, not because it needs more surface area.
 
-For now, it’s live, it works, and it’s easy to maintain — exactly what I was aiming for. Thanks for checking out my site and taking the time to read these posts.
+For now, it’s live, it works, and it’s easy to maintain, which is exactly what I was aiming for. Thanks for checking out my site and taking the time to read these posts.
